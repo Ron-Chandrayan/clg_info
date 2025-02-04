@@ -34,8 +34,13 @@ app.get('/', async (req, res) => {
     }
 });
 
+app.get('/pers',  (req, res) => {
+    return res.render('pers', { datas: null });
+});
+
 app.post('/', async (req, res) => {
-    console.log(req.body);
+    console.log(req.body.formType);
+    if(req.body.formType === 'form1'){
        if(req.body.FilterBy === 'Name'){
         console.log()
        if(typeof req.body.parameter != 'string'){
@@ -112,12 +117,17 @@ app.post('/', async (req, res) => {
             console.log("Error fetching data:", err);
         }
     }
+  }
+  else if(req.body.formType === 'form2'){
+    console.log(req.body.stuname);
+    const data = await C_Division.find({name: req.body.stuname });
+    console.log(data);
+    return res.render('pers', { data });
+  }
     
 });
 
-app.get('/pers',(req,res)=>{
-    res.render('pers');
-});
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

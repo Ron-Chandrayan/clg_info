@@ -32,6 +32,7 @@
   <div class="container mt-4">
     <h2 class="text-center mb-4">List of Students</h2>
     <form class="d-flex" role="search" action="/" method="POST">
+      <input type="hidden" name="formType" value="form1">
       <select class="form-select mx-2" name="FilterBy" aria-label="Default select example" style="width: 100px;">
         <option selected>Name</option>
         <option value="Rollno">Roll no.</option>
@@ -48,9 +49,14 @@
           <div class="col-md-4">
             <div class="card shadow-sm">
               <div class="card-body">
-                <h5 class="card-title">
-                  <a href="/pers"><%= student.name %></a>
+                <form action="/" method="POST">
+                  <input type="hidden" name="formType" value="form2">
+                  <input type="hidden" name="stuname" value="<%= student.name %>">
+                <h5 class="card-title" >
+                  <%= student.name %>
                 </h5>
+                <button class="btn btn-outline-success" type="submit">Click here</button>
+                </form>
                 <p class="card-text">Roll No: <%= student.rollNo %></p>
                 <p class="card-text"><strong>SGPI:</strong> <%= student.sgpi %></p>
               </div>
