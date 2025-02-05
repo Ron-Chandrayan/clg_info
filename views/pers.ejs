@@ -10,6 +10,15 @@
             text-align: center;
             margin-top: 50px;
         }
+        h2{
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        #roll{
+            text-align: center;
+            margin: 20px
+        }
     </style>
   </head>
   <body>
@@ -21,7 +30,10 @@
       </div>
     </nav>
     <h3>Welcome <%= data[0].name %></h3>
-    <table  class="table table-success table-striped-columns table table-bordered">
+    <h3 id="roll">PRN no. 124A10<%=data[0].rollNo%></h3>
+    <h2>SEM-I marksheet</h2>
+    <div class="container">
+    <table  class="table table-success table-striped-columns table table-bordered text-center">
       <thead>
         <tr>
           <th scope="col">Subjects</th>
@@ -61,49 +73,49 @@
           <td><%= data[0].subjects.c_programming.total %></td>
         </tr>
         <tr>
+          <th scope="row">AMRD</th>
+          <td><%= data[0].subjects.amrd.ese %></td>
+          <td><%= data[0].subjects.amrd.ise %></td>
+          <td><%= data[0].subjects.amrd.mse %></td>
+          <td><%= data[0].subjects.amrd.total %></td>
+        </tr>
+        <tr>
           <th scope="row">Applied Physics Lab</th>
-          <td><%= data[0].subjects.lab.applied_physics_lab.ese %></td>
-          <td><%= data[0].subjects.lab.applied_physics_lab.ise %></td>
-          <td><%= data[0].subjects.lab.applied_physics_lab.mse %></td>
-          <td><%= data[0].subjects.lab.applied_physics_lab.total %></td>
+          <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.applied_physics_lab %></td>
         <tr>
           <tr>
-            <th scope="row">AMRD</th>
-            <td><%= data[0].subjects.amrd.ese %></td>
-            <td><%= data[0].subjects.amrd.ise %></td>
-            <td><%= data[0].subjects.amrd.mse %></td>
-            <td><%= data[0].subjects.amrd.total %></td>
+            <th scope="row">BEEE Lab</th>
+            <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.beee_lab %></td>
           <tr>
             <tr>
-              <th scope="row">AMRD</th>
-              <td><%= data[0].subjects.amrd.ese %></td>
-              <td><%= data[0].subjects.amrd.ise %></td>
-              <td><%= data[0].subjects.amrd.mse %></td>
-              <td><%= data[0].subjects.amrd.total %></td>
+              <th scope="row">CP Lab</th>
+              <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.cp_lab %></td>
             <tr>
               <tr>
-                <th scope="row">AMRD</th>
-                <td><%= data[0].subjects.amrd.ese %></td>
-                <td><%= data[0].subjects.amrd.ise %></td>
-                <td><%= data[0].subjects.amrd.mse %></td>
-                <td><%= data[0].subjects.amrd.total %></td>
+                <th scope="row">AMRD Lab</th>
+                <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.amrd_lab %></td>
               <tr>
           <th scope="row">Workshop</th>
-          <td colspan="2"><%= data[0].additional_courses.workshop.grade_points %></td>
+          <td colspan="2"><strong>Grade points:- </strong><%= data[0].additional_courses.workshop.grade_points %></td>
           <td colspan="2"><strong>Grade:- </strong><%= data[0].additional_courses.workshop.grade %></td>
         </tr>
        <tr>
           <th scope="row">HWM</th>
-          <td colspan="2"><%= data[0].additional_courses.health_wellness.grade_points %></td>
+          <td colspan="2"><strong>Grade points:- </strong><%= data[0].additional_courses.health_wellness.grade_points %></td>
           <td colspan="2"><strong>Grade:- </strong><%= data[0].additional_courses.health_wellness.grade %></td>
         </tr> 
         <tr>
           <th scope="row">UHV</th>
-          <td colspan="2"><%= data[0].additional_courses.universal_human_values.grade_points %></td>
+          <td colspan="2"><strong>Grade points:- </strong><%= data[0].additional_courses.universal_human_values.grade_points %></td>
           <td colspan="2"><strong>Grade:- </strong><%= data[0].additional_courses.universal_human_values.grade %></td>
         </tr>
       </tbody>
     </table>
+     <p style="white-space: pre; font-size: larger;"class="fw-bold">Total marks obtained: <%=data[0].total_marks%>/675</p>
+     <p style="white-space: pre; font-size: larger;"class="fw-bold">SGPI: <%=data[0].sgpi%></p>
+     <!-- <p style="white-space: pre; font-size: larger;"class="fw-bold">Status: <%=data[0].result%><% if (data[0].result==='P') { %>ass! Congratulations<% } else { %>ail! Please apply for Re-exams<% } %></p> -->
+      <% if(data[0].result==='P'){%><p  style="white-space: pre; font-size: larger; color: #198754;"class="text-center mt-3 fw-bold">Pass! Congratulations</p><%} else{%><p  style="white-space: pre; font-size: larger; color: #dc3545;"class="text-center mt-3 fw-bold">Fail! Please apply for re-exams</p><%}%>
+  </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>

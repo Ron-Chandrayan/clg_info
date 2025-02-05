@@ -18,7 +18,7 @@ app.get('/', async (req, res) => {
         if (datas.length === 0) {
             console.log('No data found');
         } else {
-            console.log('Fetched Data:', datas[0].name);
+            console.log('Fetched Data:', datas);
             console.log(datas.length);
             for(let i=0;i<datas.length;i++){
                 if (isNaN(datas[i].sgpi)) {
@@ -33,6 +33,21 @@ app.get('/', async (req, res) => {
         console.log("Error fetching data:", err);
     }
 });
+
+app.get('/form', (req, res) => {
+    return res.render('form');
+});
+
+app.post('/form', async (req, res) => {
+    try {
+        const student = new C_Division(req.body);
+        await student.save();
+        res.send('Student data saved successfully!');
+    } catch (error) {
+        res.status(500).send('Error saving student data.');
+    }
+});
+
 
 app.get('/pers',  (req, res) => {
     return res.render('pers', { datas: null });

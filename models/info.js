@@ -1,6 +1,7 @@
 const mongoose=require("mongoose");
 const cDivisionSchema = new mongoose.Schema({
     rollNo: Number,
+    seatNo: Number,
     name: String,
     subjects: {
         applied_mathematics: {

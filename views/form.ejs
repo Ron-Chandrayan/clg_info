@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: peachpuff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Student Information Form</h2>
+        <form  method="POST">
+            <div class="mb-3">
+                <label>Roll No</label>
+                <input type="number" name="rollNo" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Seat No</label>
+                <input type="number" name="seatNo" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+
+            <h4>Subjects</h4>
+            <h4>Subjects</h4>
+
+<!-- Applied Mathematics -->
+<div class="row">
+    <div class="col">
+        <label>Applied Mathematics (ESE)</label>
+        <input type="number" name="subjects[applied_mathematics][ese]" class="form-control">
+    </div>
+    <div class="col">
+        <label>ISE</label>
+        <input type="number" name="subjects[applied_mathematics][ise]" class="form-control">
+    </div>
+    <div class="col">
+        <label>MSE</label>
+        <input type="number" name="subjects[applied_mathematics][mse]" class="form-control">
+    </div>
+    <div class="col">
+        <label>Total</label>
+        <input type="number" name="subjects[applied_mathematics][total]" class="form-control">
+    </div>
+</div>
+
+<!-- Applied Physics -->
+<div class="row">
+    <div class="col">
+        <label>Applied Physics (ESE)</label>
+        <input type="number" name="subjects[applied_physics][ese]" class="form-control">
+    </div>
+    <div class="col">
+        <label>ISE</label>
+        <input type="number" name="subjects[applied_physics][ise]" class="form-control">
+    </div>
+    <div class="col">
+        <label>MSE</label>
+        <input type="number" name="subjects[applied_physics][mse]" class="form-control">
+    </div>
+    <div class="col">
+        <label>Total</label>
+        <input type="number" name="subjects[applied_physics][total]" class="form-control">
+    </div>
+</div>
+
+<!-- BEEE -->
+<div class="row">
+    <div class="col">
+        <label>BEEE (ESE)</label>
+        <input type="number" name="subjects[beee][ese]" class="form-control">
+    </div>
+    <div class="col">
+        <label>ISE</label>
+        <input type="number" name="subjects[beee][ise]" class="form-control">
+    </div>
+    <div class="col">
+        <label>MSE</label>
+        <input type="number" name="subjects[beee][mse]" class="form-control">
+    </div>
+    <div class="col">
+        <label>Total</label>
+        <input type="number" name="subjects[beee][total]" class="form-control">
+    </div>
+</div>
+
+<!-- C Programming -->
+<div class="row">
+    <div class="col">
+        <label>C Programming (ESE)</label>
+        <input type="number" name="subjects[c_programming][ese]" class="form-control">
+    </div>
+    <div class="col">
+        <label>ISE</label>
+        <input type="number" name="subjects[c_programming][ise]" class="form-control">
+    </div>
+    <div class="col">
+        <label>MSE</label>
+        <input type="number" name="subjects[c_programming][mse]" class="form-control">
+    </div>
+    <div class="col">
+        <label>Total</label>
+        <input type="number" name="subjects[c_programming][total]" class="form-control">
+    </div>
+</div>
+
+<!-- AMRD -->
+<div class="row">
+    <div class="col">
+        <label>AMRD (ESE)</label>
+        <input type="number" name="subjects[amrd][ese]" class="form-control">
+    </div>
+    <div class="col">
+        <label>ISE</label>
+        <input type="number" name="subjects[amrd][ise]" class="form-control">
+    </div>
+    <div class="col">
+        <label>MSE</label>
+        <input type="number" name="subjects[amrd][mse]" class="form-control">
+    </div>
+    <div class="col">
+        <label>Total</label>
+        <input type="number" name="subjects[amrd][total]" class="form-control">
+    </div>
+</div>
+
+<!-- Lab Subjects -->
+<div class="row">
+    <div class="col">
+        <label>Applied Physics Lab</label>
+        <input type="number" name="subjects[lab][applied_physics_lab]" class="form-control">
+    </div>
+    <div class="col">
+        <label>BEEE Lab</label>
+        <input type="number" name="subjects[lab][beee_lab]" class="form-control">
+    </div>
+    <div class="col">
+        <label>C Programming Lab</label>
+        <input type="number" name="subjects[lab][cp_lab]" class="form-control">
+    </div>
+    <div class="col">
+        <label>AMRD Lab</label>
+        <input type="number" name="subjects[lab][amrd_lab]" class="form-control">
+    </div>
+</div>
+
+
+            <h4>Additional Courses</h4>
+            <div class="mb-3">
+                <label>Workshop Grade</label>
+                <input type="text" name="additional_courses[workshop][grade]" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>Workshop Grade Points</label>
+                <input type="number" name="additional_courses[workshop][grade_points]" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>Workshop Credits</label>
+                <input type="number" name="additional_courses[workshop][credits]" class="form-control">
+            </div>
+            
+            <!-- Health & Wellness -->
+            <div class="mb-3">
+                <label>Health & Wellness Grade</label>
+                <input type="text" name="additional_courses[health_wellness][grade]" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>Health & Wellness Grade Points</label>
+                <input type="number" name="additional_courses[health_wellness][grade_points]" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>Health & Wellness Credits</label>
+                <input type="number" name="additional_courses[health_wellness][credits]" class="form-control">
+            </div>
+            
+            <!-- Universal Human Values -->
+            <div class="mb-3">
+                <label>Universal Human Values Grade</label>
+                <input type="text" name="additional_courses[universal_human_values][grade]" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>Universal Human Values Grade Points</label>
+                <input type="number" name="additional_courses[universal_human_values][grade_points]" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>Universal Human Values Credits</label>
+                <input type="number" name="additional_courses[universal_human_values][credits]" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>Total Marks</label>
+                <input type="number" name="total_marks" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>Result</label>
+                <input type="text" name="result" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>SGPI</label>
+                <input type="number" step="0.01" name="sgpi" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
