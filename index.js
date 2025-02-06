@@ -4,6 +4,7 @@ const port = 3000
 const mongoose=require("mongoose");
 const C_Division=require("./models/info.js");
 const Email=require("./models/emu.js");
+const Ward=require("./models/atten.js");
 app.set('view engine', 'ejs');
 app.use('/static',express.static('static'));
 app.use(express.urlencoded());
@@ -111,7 +112,7 @@ app.post('/', async (req, res) => {
         }
     }
     }
-    else if(req.body.FilterBy === 'SGPI'){
+    else if(req.body.FilterBy === 'SGPI >'){
         console.log(typeof req.body.parameter);
         if( isNaN(parseInt(req.body.parameter))){
             return res.render('index',  {datas:[], errorMessage: 'Please enter a valid SGPI' });
@@ -140,19 +141,50 @@ app.post('/', async (req, res) => {
     }
    
     }
+    else if(req.body.FilterBy === 'SGPI ='){
+        console.log(typeof req.body.parameter);
+        if( isNaN(parseInt(req.body.parameter))){
+            return res.render('index',  {datas:[], errorMessage: 'Please enter a valid SGPI' });
+        }
+        else{
+        try {
+            const datas = await C_Division.find({sgpi:  req.body.parameter   }).sort({sgpi:1}); // Fetch all documents from c_division    
+            if (datas.length === 0) {
+                console.log('No data found');
+                return res.render('index',  {datas:[], errorMessage: 'No data found' });
+            } else {
+                console.log(Object.keys(datas[0]));
+                console.log('Fetched Data:', datas[0].name);
+                console.log(datas.length);
+                // for(let i=0;i<datas.length;i++){
+                //     if (isNaN(datas[i].sgpi)) {
+                //         datas[i].sgpi=0;
+                //         a=datas[i].sgpi;
+                //     }
+                // }
+                return res.render('index', { datas, errorMessage: null });
+            }  
+        } catch (err) {
+            console.log("Error fetching data:", err);
+        }
+    }
+   
+    }
     
   }
   else if(req.body.formType === 'form2'){
-    // console.log(req.body.stuname);
-    // console.log(req.body.sturoll);
+     console.log(req.body.sturoll);
+    console.log(typeof req.body.sturoll);
     const email=await Email.find({roll_no: parseInt(req.body.sturoll)});
-    console.log(typeof email);
-    console.log(Object.keys(email[0]));
+    const atten=await Ward.find({roll_no: parseInt(req.body.sturoll)});
+    console.log(atten[0].attendance['HWM'].percentage);
+    //console.log(typeof email);
+    //console.log(Object.keys(email[0]));
 
-    console.log(console.log(email[0]._doc.email_id));
+    //console.log(console.log(email[0]._doc.email_id));
     const data = await C_Division.find({name: req.body.stuname });
     //console.log(data);
-    return res.render('pers', { email: email[0]._doc.email_id , data });
+    return res.render('pers', { email: email[0]._doc.email_id , data, atten  });
   }
     
 });
