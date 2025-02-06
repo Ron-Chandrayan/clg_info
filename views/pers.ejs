@@ -113,6 +113,7 @@
     </table>
      <p style="white-space: pre; font-size: larger;"class="fw-bold">Total marks obtained: <%=data[0].total_marks%>/675</p>
      <p style="white-space: pre; font-size: larger;"class="fw-bold">SGPI: <%=data[0].sgpi%></p>
+     <p style="white-space: pre; font-size: larger;"class="fw-bold">Your email is: <%=email%></p>
      <!-- <p style="white-space: pre; font-size: larger;"class="fw-bold">Status: <%=data[0].result%><% if (data[0].result==='P') { %>ass! Congratulations<% } else { %>ail! Please apply for Re-exams<% } %></p> -->
       <% if(data[0].result==='P'){%><p  style="white-space: pre; font-size: larger; color: #198754;"class="text-center mt-3 fw-bold">Pass! Congratulations</p><%} else{%><p  style="white-space: pre; font-size: larger; color: #dc3545;"class="text-center mt-3 fw-bold">Fail! Please apply for re-exams</p><%}%>
   </div>

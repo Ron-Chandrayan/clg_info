@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const mongoose=require("mongoose");
 const C_Division=require("./models/info.js");
+const Email=require("./models/emu.js");
 app.set('view engine', 'ejs');
 app.use('/static',express.static('static'));
 app.use(express.urlencoded());
@@ -18,7 +19,7 @@ app.get('/', async (req, res) => {
         if (datas.length === 0) {
             console.log('No data found');
         } else {
-            console.log('Fetched Data:', datas);
+            // console.log('Fetched Data:', datas[0]);
             console.log(datas.length);
             for(let i=0;i<datas.length;i++){
                 if (isNaN(datas[i].sgpi)) {
@@ -112,12 +113,17 @@ app.post('/', async (req, res) => {
     }
     else if(req.body.FilterBy === 'SGPI'){
         console.log(typeof req.body.parameter);
+        if( isNaN(parseInt(req.body.parameter))){
+            return res.render('index',  {datas:[], errorMessage: 'Please enter a valid SGPI' });
+        }
+        else{
         try {
-            const datas = await C_Division.find({sgpi: { $gt: req.body.parameter }  }).sort({sgpi:-1}); // Fetch all documents from c_division    
+            const datas = await C_Division.find({sgpi: { $gt: req.body.parameter }  }).sort({sgpi:1}); // Fetch all documents from c_division    
             if (datas.length === 0) {
                 console.log('No data found');
                 return res.render('index',  {datas:[], errorMessage: 'No data found' });
             } else {
+                console.log(Object.keys(datas[0]));
                 console.log('Fetched Data:', datas[0].name);
                 console.log(datas.length);
                 // for(let i=0;i<datas.length;i++){
@@ -132,12 +138,21 @@ app.post('/', async (req, res) => {
             console.log("Error fetching data:", err);
         }
     }
+   
+    }
+    
   }
   else if(req.body.formType === 'form2'){
-    console.log(req.body.stuname);
+    // console.log(req.body.stuname);
+    // console.log(req.body.sturoll);
+    const email=await Email.find({roll_no: parseInt(req.body.sturoll)});
+    console.log(typeof email);
+    console.log(Object.keys(email[0]));
+
+    console.log(console.log(email[0]._doc.email_id));
     const data = await C_Division.find({name: req.body.stuname });
-    console.log(data);
-    return res.render('pers', { data });
+    //console.log(data);
+    return res.render('pers', { email: email[0]._doc.email_id , data });
   }
     
 });
