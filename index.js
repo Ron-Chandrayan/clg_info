@@ -15,7 +15,13 @@ async function hey(){
   }
   hey();
 
-app.get('/', async (req, res) => {
+app.get('/', async (req, res) => { 
+    return res.render('index');
+ });
+
+
+
+app.get('/cdiv', async (req, res) => {
     try {
         const datas = await C_Division.find().sort({rollNo:1}); // Fetch all documents from c_division
         if (datas.length === 0) {
@@ -31,7 +37,7 @@ app.get('/', async (req, res) => {
                 }
             }
             datas[7].sgpi=0 ;
-            return res.render('index', { datas ,sgpi: datas[a].sgpi, errorMessage: null, show });
+            return res.render('cdiv', { datas ,sgpi: datas[a].sgpi, errorMessage: null, show });
         }
     } catch (err) {
         console.log("Error fetching data:", err);
@@ -57,20 +63,20 @@ app.get('/pers',  (req, res) => {
     return res.render('pers', { datas: null });
 });
 
-app.post('/', async (req, res) => {
+app.post('/cdiv', async (req, res) => {
     console.log(req.body.formType);
     if(req.body.formType === 'form1'){
        if(req.body.FilterBy === 'Name'){
         console.log()
        if(typeof req.body.parameter != 'string'){
-        return res.render('index',  {datas:[], errorMessage: 'Please enter a valid name' });
+        return res.render('cdiv',  {datas:[], errorMessage: 'Please enter a valid name' });
         }
        else{
         try {
             const datas = await C_Division.find({name: { $regex: req.body.parameter , $options: 'i' } }).sort({rollNo:1}); // Fetch all documents from c_division
             if (datas.length === 0) {
                 console.log('No data found');
-                return res.render('index',  {datas:[], errorMessage: 'No data found' });
+                return res.render('cdiv',  {datas:[], errorMessage: 'No data found' });
             } else {
                 console.log('Fetched Data:', datas[0].name);
                 console.log(datas.length);
@@ -81,7 +87,7 @@ app.post('/', async (req, res) => {
                 //     }
                 // }
                 show = true;
-                return res.render('index', { datas, errorMessage: null, show });
+                return res.render('cdiv', { datas, errorMessage: null, show });
             }
         } catch (err) {
             console.log("Error fetching data:", err);
@@ -91,14 +97,14 @@ app.post('/', async (req, res) => {
     else if(req.body.FilterBy === 'Rollno'){
         console.log(typeof req.body.parameter);
         if(isNaN(parseInt(req.body.parameter))){
-            return res.render('index',  {datas:[], errorMessage: 'Please enter a valid roll number' });
+            return res.render('cdiv',  {datas:[], errorMessage: 'Please enter a valid roll number' });
         }
         else{
         try {
             const datas = await C_Division.find({rollNo: req.body.parameter }); // Fetch all documents from c_division
             if (datas.length === 0) {
                 console.log('No data found');
-                return res.render('index',  {datas:[], errorMessage: 'No data found' });
+                return res.render('cdiv',  {datas:[], errorMessage: 'No data found' });
             } else {
                 console.log('Fetched Data:', datas[0].name);
                 console.log(datas.length);
@@ -109,7 +115,7 @@ app.post('/', async (req, res) => {
                 //     }
                 // }
                 show = true
-                return res.render('index', { datas, errorMessage: null, show });
+                return res.render('cdiv', { datas, errorMessage: null, show });
             }
         } catch (err) {
             console.log("Error fetching data:", err);
@@ -119,7 +125,7 @@ app.post('/', async (req, res) => {
     else if(req.body.FilterBy === 'SGPI >'){
         console.log(typeof req.body.parameter);
         if( isNaN(parseInt(req.body.parameter))){
-            return res.render('index',  {datas:[], errorMessage: 'Please enter a valid SGPI' });
+            return res.render('cdiv',  {datas:[], errorMessage: 'Please enter a valid SGPI' });
         }
         else{
         try {
@@ -138,7 +144,7 @@ app.post('/', async (req, res) => {
                 //     }
                 // }
                 show =true
-                return res.render('index', { datas, errorMessage: null, show });
+                return res.render('cdiv', { datas, errorMessage: null, show });
             }  
         } catch (err) {
             console.log("Error fetching data:", err);
@@ -149,14 +155,14 @@ app.post('/', async (req, res) => {
     else if(req.body.FilterBy === 'SGPI ='){
         console.log(typeof req.body.parameter);
         if( isNaN(parseInt(req.body.parameter))){
-            return res.render('index',  {datas:[], errorMessage: 'Please enter a valid SGPI' });
+            return res.render('cdiv',  {datas:[], errorMessage: 'Please enter a valid SGPI' });
         }
         else{
         try {
             const datas = await C_Division.find({sgpi:  req.body.parameter   }).sort({sgpi:1}); // Fetch all documents from c_division    
             if (datas.length === 0) {
                 console.log('No data found');
-                return res.render('index',  {datas:[], errorMessage: 'No data found' });
+                return res.render('cdiv',  {datas:[], errorMessage: 'No data found' });
             } else {
                 console.log(Object.keys(datas[0]));
                 console.log('Fetched Data:', datas[0].name);
@@ -168,7 +174,7 @@ app.post('/', async (req, res) => {
                 //     }
                 // }
                 show =true
-                return res.render('index', { datas, errorMessage: null , show });
+                return res.render('cdiv', { datas, errorMessage: null , show });
             }  
         } catch (err) {
             console.log("Error fetching data:", err);
