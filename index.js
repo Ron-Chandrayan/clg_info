@@ -9,6 +9,7 @@ app.set('view engine', 'ejs');
 app.use('/static',express.static('static'));
 app.use(express.urlencoded());
 let a=0;
+let show= "";
 async function hey(){
     await mongoose.connect("mongodb+srv://chandrayanpaul27:chandrayan%402006@cluster0.7ik3i.mongodb.net/sies");
   }
@@ -21,6 +22,7 @@ app.get('/', async (req, res) => {
             console.log('No data found');
         } else {
             // console.log('Fetched Data:', datas[0]);
+            show  = false;
             console.log(datas.length);
             for(let i=0;i<datas.length;i++){
                 if (isNaN(datas[i].sgpi)) {
@@ -29,7 +31,7 @@ app.get('/', async (req, res) => {
                 }
             }
             datas[7].sgpi=0 ;
-            return res.render('index', { datas ,sgpi: datas[a].sgpi, errorMessage: null });
+            return res.render('index', { datas ,sgpi: datas[a].sgpi, errorMessage: null, show });
         }
     } catch (err) {
         console.log("Error fetching data:", err);
@@ -78,7 +80,8 @@ app.post('/', async (req, res) => {
                 //         a=datas[i].sgpi;
                 //     }
                 // }
-                return res.render('index', { datas, errorMessage: null });
+                show = true;
+                return res.render('index', { datas, errorMessage: null, show });
             }
         } catch (err) {
             console.log("Error fetching data:", err);
@@ -105,7 +108,8 @@ app.post('/', async (req, res) => {
                 //         a=datas[i].sgpi;
                 //     }
                 // }
-                return res.render('index', { datas, errorMessage: null });
+                show = true
+                return res.render('index', { datas, errorMessage: null, show });
             }
         } catch (err) {
             console.log("Error fetching data:", err);
@@ -133,7 +137,8 @@ app.post('/', async (req, res) => {
                 //         a=datas[i].sgpi;
                 //     }
                 // }
-                return res.render('index', { datas, errorMessage: null });
+                show =true
+                return res.render('index', { datas, errorMessage: null, show });
             }  
         } catch (err) {
             console.log("Error fetching data:", err);
@@ -162,7 +167,8 @@ app.post('/', async (req, res) => {
                 //         a=datas[i].sgpi;
                 //     }
                 // }
-                return res.render('index', { datas, errorMessage: null });
+                show =true
+                return res.render('index', { datas, errorMessage: null , show });
             }  
         } catch (err) {
             console.log("Error fetching data:", err);

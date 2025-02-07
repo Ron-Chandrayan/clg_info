@@ -1,30 +1,60 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Result</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-      h3{
-            text-align: center;
-            margin-top: 50px;
-        }
-        h2{
-            text-align: center;
-            margin-top: 50px;
-        }
-        
-        #roll{
-            text-align: center;
-            margin: 20px
-        }
+      body {
+        background-color: #212529;
+        color: #e9ecef;
+      }
+      
+      h3 {
+        text-align: center;
+        margin-top: 50px;
+        color: #f8f9fa;
+      }
+      
+      h2 {
+        text-align: center;
+        margin-top: 50px;
+        color: #f8f9fa;
+      }
+      
+      #roll {
+        text-align: center;
+        margin: 20px;
+      }
+
+      .table {
+        background-color: #343a40;
+        color: #e9ecef;
+      }
+
+      .table-success {
+        --bs-table-bg: #1a472a;
+        --bs-table-striped-bg: #2a533a;
+        --bs-table-striped-color: #fff;
+        --bs-table-active-bg: #2a533a;
+        --bs-table-active-color: #fff;
+        --bs-table-hover-bg: #2a533a;
+        --bs-table-hover-color: #fff;
+        color: #fff;
+      }
+
+      .navbar-dark {
+        background-color: #0d6efd !important;
+      }
+
+      .container {
+        background-color: #212529;
+      }
     </style>
   </head>
   <body>
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Student SGPI Portal</a>
       </div>
@@ -33,7 +63,7 @@
     <h3 id="roll">PRN no. 124A10<%=data[0].rollNo%></h3>
     <h2>SEM-I marksheet</h2>
     <div class="container">
-    <table  class="table table-success table-striped-columns table table-bordered text-center">
+    <table class="table table-success table-striped-columns table-bordered text-center">
       <thead>
         <tr>
           <th scope="col">Subjects</th>
@@ -43,6 +73,7 @@
           <th scope="col">TOT</th>
           <th scope="col">Classes Present</th>
           <th scope="col">Attendance %</th>
+          <th scope="col">Pass/Fail</th>
         </tr>
       </thead>
       <tbody>
@@ -54,6 +85,7 @@
           <td><%= data[0].subjects.applied_mathematics.total %></td>
           <td><%= atten[0].attendance['AM'].lectures %>/32</td>
           <td><%= atten[0].attendance['AM'].percentage %> %</td>
+          <td><%if(data[0].subjects.applied_mathematics.ese>=24 && data[0].subjects.applied_mathematics.ise>= 8 && data[0].subjects.applied_mathematics.mse>= 8){%>Pass<%}else{%>Fail<%}%></td>
         </tr>
         <tr>
           <th scope="row">Applied Physics</th>
@@ -63,6 +95,7 @@
           <td><%= data[0].subjects.applied_physics.total %></td>
           <td><%= atten[0].attendance['AP/AC'].lectures %>/31</td>
           <td><%= atten[0].attendance['AP/AC'].percentage %> %</td>
+          <td><%if(data[0].subjects.applied_physics.ese>=24 && data[0].subjects.applied_physics.ise>= 8 && data[0].subjects.applied_physics.mse>= 8){%>Pass<%}else{%>Fail<%}%></td>
         </tr>
         <tr>
           <th scope="row">BEEE</th>
@@ -72,6 +105,7 @@
           <td><%= data[0].subjects.beee.total %></td>
           <td><%= atten[0].attendance['BEE'].lectures%>/25</td>
           <td><%= atten[0].attendance['BEE'].percentage %> %</td>
+          <td><%if(data[0].subjects.beee.ese>=18 && data[0].subjects.beee.ise>= 6 && data[0].subjects.beee.mse>= 6){%>Pass<%}else{%>Fail<%}%></td>
         </tr>
         <tr>
           <th scope="row">C-Programming</th>
@@ -81,6 +115,7 @@
           <td><%= data[0].subjects.c_programming.total %></td>
           <td><%= atten[0].attendance['CP'].lectures%>/25</td>
           <td><%= atten[0].attendance['CP'].percentage %> %</td>
+          <td><%if(data[0].subjects.c_programming.ese>=18 && data[0].subjects.c_programming.ise>= 6 && data[0].subjects.c_programming.mse>= 6){%>Pass<%}else{%>Fail<%}%></td>
         </tr>
         <tr>
           <th scope="row">AMRD</th>
@@ -90,59 +125,79 @@
           <td><%= data[0].subjects.amrd.total %></td>
           <td><%= atten[0].attendance['AMRD'].lectures%>/23</td>
           <td><%= atten[0].attendance['AMRD'].percentage %> %</td>
+          <td><%if(data[0].subjects.amrd.ese>=18 && data[0].subjects.amrd.ise>= 6 && data[0].subjects.amrd.mse>= 6){%>Pass<%}else{%>Fail<%}%></td>
         </tr>
         <tr>
           <th scope="row">Applied Physics Lab</th>
           <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.applied_physics_lab %></td>
           <td><%= atten[0].attendance['AP/AC (Lectures)'].lectures%>/7</td>
           <td><%= atten[0].attendance['AP/AC (Lectures)'].percentage %>%</td>
+          <td></td>
+        </tr>
         <tr>
-          <tr>
-            <th scope="row">BEEE Lab</th>
-            <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.beee_lab %></td>
-            <td><%= atten[0].attendance['BEE (Lectures)'].lectures%>/7</td>
-            <td><%= atten[0].attendance['BEE (Lectures)'].percentage %> %</td>
-          <tr>
-            <tr>
-              <th scope="row">CP Lab</th>
-              <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.cp_lab %></td>
-              <td><%= atten[0].attendance['CP (Lectures)'].lectures%>/6</td>
-              <td><%= atten[0].attendance['CP (Lectures)'].percentage %> %</td>
-            <tr>
-              <tr>
-                <th scope="row">AMRD Lab</th>
-                <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.amrd_lab %></td>
-                <td><%= atten[0].attendance['AMRD - Workshop'].lectures%>/9</td>
-                <td><%= atten[0].attendance['AMRD - Workshop'].percentage %> %</td>
-              <tr>
+          <th scope="row">BEEE Lab</th>
+          <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.beee_lab %></td>
+          <td><%= atten[0].attendance['BEE (Lectures)'].lectures%>/7</td>
+          <td><%= atten[0].attendance['BEE (Lectures)'].percentage %> %</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">CP Lab</th>
+          <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.cp_lab %></td>
+          <td><%= atten[0].attendance['CP (Lectures)'].lectures%>/6</td>
+          <td><%= atten[0].attendance['CP (Lectures)'].percentage %> %</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">AMRD Lab</th>
+          <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.amrd_lab %></td>
+          <td><%= atten[0].attendance['AMRD - Workshop'].lectures%>/9</td>
+          <td><%= atten[0].attendance['AMRD - Workshop'].percentage %> %</td>
+          <td></td>
+        </tr>
+        <tr>
           <th scope="row">Workshop</th>
           <td colspan="2"><strong>Grade points:- </strong><%= data[0].additional_courses.workshop.grade_points %></td>
           <td colspan="2"><strong>Grade:- </strong><%= data[0].additional_courses.workshop.grade %></td>
           <td><%= atten[0].attendance['Workshop'].lectures%>/6</td>
           <td><%= atten[0].attendance['Workshop'].percentage %> %</td>
+          <td></td>
         </tr>
-       <tr>
+        <tr>
           <th scope="row">HWM</th>
           <td colspan="2"><strong>Grade points:- </strong><%= data[0].additional_courses.health_wellness.grade_points %></td>
           <td colspan="2"><strong>Grade:- </strong><%= data[0].additional_courses.health_wellness.grade %></td>
           <td><%= atten[0].attendance['HWM'].lectures %>/14</td>
           <td><%= atten[0].attendance['HWM'].percentage %> %</td>
-        </tr> 
+          <td></td>
+        </tr>
         <tr>
           <th scope="row">UHV</th>
           <td colspan="2"><strong>Grade points:- </strong><%= data[0].additional_courses.universal_human_values.grade_points %></td>
           <td colspan="2"><strong>Grade:- </strong><%= data[0].additional_courses.universal_human_values.grade %></td>
           <td><%= atten[0].attendance['UHV'].lectures%>/22</td>
           <td><%= atten[0].attendance['UHV'].percentage %> %</td>
+          <td></td>
         </tr>
       </tbody>
     </table>
-     <p style="white-space: pre; font-size: larger;"class="fw-bold">Total marks obtained: <%=data[0].total_marks%>/675</p>
-     <p style="white-space: pre; font-size: larger;"class="fw-bold">SGPI: <%=data[0].sgpi%></p>
-     <p style="white-space: pre; font-size: larger;"class="fw-bold">Your email is: <%=email%></p>
-     <!-- <p style="white-space: pre; font-size: larger;"class="fw-bold">Status: <%=data[0].result%><% if (data[0].result==='P') { %>ass! Congratulations<% } else { %>ail! Please apply for Re-exams<% } %></p> -->
-      <% if(data[0].result==='P'){%><p  style="white-space: pre; font-size: larger; color: #198754;"class="text-center mt-3 fw-bold">Pass! Congratulations</p><%} else{%><p  style="white-space: pre; font-size: larger; color: #dc3545;"class="text-center mt-3 fw-bold">Fail! Please apply for re-exams</p><%}%>
-  </div>
+    <p style="white-space: pre; font-size: larger;" class="fw-bold text-light">Total marks obtained: <%=data[0].total_marks%>/675</p>
+    <p style="white-space: pre; font-size: larger;" class="fw-bold text-light">SGPI: <%=data[0].sgpi%></p>
+    <p style="white-space: pre; font-size: larger;" class="fw-bold text-light">Your email is: <%=email%></p>
+    <% if (data[0].result === 'P') { %>
+      <p style="white-space: pre; font-size: larger; color: #198754;" class="text-center mt-3 fw-bold">
+          Pass! Congratulations
+      </p>
+    <% } else if (data[0].result === 'P*') { %>
+      <p style="white-space: pre; font-size: larger; color: #198754;" class="text-center mt-3 fw-bold">
+          Pass ! But you have failed in one subject !!
+      </p>
+    <% } else { %>
+      <p style="white-space: pre; font-size: larger; color: #dc3545;" class="text-center mt-3 fw-bold">
+          Fail! Please apply for re-exams
+      </p>
+    <% } %>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
