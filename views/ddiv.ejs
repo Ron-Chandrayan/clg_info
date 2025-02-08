@@ -70,7 +70,7 @@
 
   <div class="container mt-4">
     <h2 class="text-center mb-4">List of Students</h2>
-    <form class="d-flex" role="search" action="/cdiv" method="POST">
+    <form class="d-flex" role="search" action="/ddiv" method="POST">
       <input type="hidden" name="formType" value="form1">
       <select class="form-select mx-2" name="FilterBy" aria-label="Default select example" style="width: 100px;">
         <option selected>Name</option>
@@ -90,7 +90,7 @@
           <div class="col-md-4">
             <div class="card shadow-sm">
               <div class="card-body">
-                <form action="/cdiv" method="POST">
+                <form action="/ddiv" method="POST">
                   <input type="hidden" name="formType" value="form2">
                   <input type="hidden" name="stuname" value="<%= datas[i].name %>">
                   <input type="hidden" name="sturoll" value="<%= datas[i].rollNo %>">

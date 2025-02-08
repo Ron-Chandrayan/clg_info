@@ -56,7 +56,8 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">Student SGPI Portal</a>
+        <!-- <a class="navbar-brand" href="/cdiv">Back to Student display</a> -->
+         <%if(data[0].rollNo<=63){%><a class="navbar-brand" href="/cdiv">Back to Student Display</a><%}else if(data[0].rollNo>63 && data[0].rollNo<=126){%><a class="navbar-brand" href="/ddiv">Back to Student Display</a><%}else{%><a class="navbar-brand" href="/ediv">Back to Student Display</a><%}%>
       </div>
     </nav>
     <h3>Welcome <%= data[0].name %></h3>

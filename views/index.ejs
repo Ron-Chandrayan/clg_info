@@ -57,6 +57,9 @@
         .info {
           color: var(--text-secondary);
         }
+    .classes{
+      display: flex;
+    }
   </style>
 </head>
 
@@ -68,8 +71,9 @@
       <a class="navbar-brand" href="/form">Add student data</a>
     </div>
   </nav>
-
   
+ 
+  <div class="classes">
    <div class="col-md-4 mt-4">
     <div class="card shadow-sm">
       <div class="card-body">
@@ -86,6 +90,25 @@
       </div>
     </div>
   </div>
+
+
+  <div class="col-md-4 mt-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+          <input type="hidden" name="formType" value="form2">
+          <input type="hidden" name="stuname" value="">
+          <input type="hidden" name="sturoll" value="">
+        <h5 class="info card-title" >
+          D division
+        </h5>
+        <p class="info card-text">Class Incharge:- Ashwin Chavan </p>
+        <p class="info card-text">Stream:- Computer Engineering </p>
+        <p class="info card-text">Total Students:- 63 </p>
+        <button class="btn btn-outline-success" type="submit"> <a href="ddiv">Click here</a></button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
 </body>
