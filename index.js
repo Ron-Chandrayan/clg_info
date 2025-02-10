@@ -4,6 +4,7 @@ const port = 3000
 const mongoose=require("mongoose");
 const C_Division=require("./models/info.js");
 const D_Division=require("./models/ddivi.js");
+//const Timetable=require("./models/time.js");
 const Email=require("./models/emu.js");
 const Ward=require("./models/atten.js");
 app.set('view engine', 'ejs');
@@ -223,7 +224,10 @@ app.post('/cdiv', async (req, res) => {
     console.log(typeof req.body.sturoll);
     const email=await Email.find({roll_no: parseInt(req.body.sturoll)});
     const atten=await Ward.find({roll_no: parseInt(req.body.sturoll)});
-    console.log(atten[0].attendance['HWM'].percentage);
+    //const timetable = await Timetable.findOne();
+    //console.log(timetable);
+  // Pretty-print the JSON
+
     //console.log(typeof email);
     //console.log(Object.keys(email[0]));
 

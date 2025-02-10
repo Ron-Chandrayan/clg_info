@@ -198,6 +198,87 @@
           Fail! Please apply for re-exams
       </p>
     <% } %>
+
+    <div class="container">
+      <table class="table table-success table-striped-columns table-bordered text-center">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Monday</th>
+            <th scope="col">Tuesday</th>
+            <th scope="col">Wednesday</th>
+            <th scope="col">Thursday</th>
+            <th scope="col">Friday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">9.15-10.15</th>
+            <td><%if(data[0].rollNo>=1 && data[0].rollNo<=21){%> <p>PCTL-VE-316</p> <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> <p></p> <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%><p></p><%}%> </td>
+            <td><%if(data[0].rollNo>=1 && data[0].rollNo<=21){%> <p></p> <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> <p></p> <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%> <p>ACL-SL-325</p> <%}%></td>
+            <td><%if(data[0].rollNo>=1 && data[0].rollNo<=21){%>  <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> ACL-SL-325 <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%> PCTL-VE-318 <%}%></td>
+            <td><%if(data[0].rollNo>=1 && data[0].rollNo<=21){%> <p></p> <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> <p>ACL-SL-325</p> <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%> <p>PCTL-VE-318</p> <%}%></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">10.15-11.15</th>
+            <td> AC-SL-304 </td>
+            <td>DSD-BL-302</td>
+            <td>AC-SL-302</td>
+            <td><%if(data[0].rollNo>=1 && data[0].rollNo<=21){%> <p>EGL-SP-L5</p> <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> <p>DSDL-BL-321</p> <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%> <p>OOPML-SK-307</p> <%}%></td>
+            <td><%if(data[0].rollNo>=1 && data[0].rollNo<=21){%>  <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> <p>PCTL-VE-316</p>  <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%>  <%}%></td>
+          </tr>
+          <tr>
+            <th scope="row">11.15-12.15</th>
+            <td > PCT-VE-304 </td>
+            <td> EG-MAA-302 </td>
+            <td> PCT-VE-302 </td>
+            <td>AM-II-G-303</td>
+            <td><%if(data[0].rollNo>=1 && data[0].rollNo<=21){%> OOPML-SK-307 <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> EGL-KMT-L5  <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%> DSDL-BL-321 <%}%></td>
+          </tr>
+          <tr>
+            <th scope="row">12.15-1.05</th>
+            <td > AM-II-AG-304 </td>
+            <td> OOPM-SK-302 </td>
+            <td>EG-MAA-302</td>
+            <td>LIBRARY</td>
+            <td><%if(data[0].rollNo>=1 && data[0].rollNo<=21){%> OOPML-SK-307 <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> EGL-KMT-L5  <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%> DSDL-BL-321 <%}%></td>
+          </tr>
+          <tr>
+            <th scope="row">Break</th>
+            <td >Break</td>
+            <td>Break</td>
+            <td>Break</td>
+            <td>Break</td>
+            <td>Break</td>
+          </tr>
+          <tr>
+            <th scope="row">1.35-2.35</th>
+            <td ><%if(data[0].rollNo>=1 && data[0].rollNo<=21){%> DSDL-BL-321 <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> OOPML-AP-307  <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%> EGL-KMT-L5 <%}%> </td>
+            <td></td>
+            <td>EW-II SR/AG</td>
+            <td>AC-SL-303</td>
+            <td>OOPM-SK-302</td>
+          </tr>
+          <tr>
+            <th scope="row">2.35-3.35</th>
+            <td ><%if(data[0].rollNo>=1 && data[0].rollNo<=21){%> DSDL-BL-321 <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> OOPML-AP-307  <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%> EGL-KMT-L5 <%}%></td>
+            <td></td>
+            <td>EW-II SR/AG</td>
+            <td>IKS-VE-303</td>
+            <td>DSD-BL-302</td>
+          </tr>
+          <tr>
+            <th scope="row">3.35-4.35</th>
+            <td ><%if(data[0].rollNo>=1 && data[0].rollNo<=21){%> ACL-SL-325 <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%>  <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%>  <%}%></td>
+            <td></td>
+            <td>DSD-BL-303</td>
+            <td>IKS-VE-303</td>
+            <td>AM-II-AG-302</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
