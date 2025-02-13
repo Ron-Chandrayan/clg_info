@@ -163,7 +163,7 @@ app.post('/cdiv', async (req, res) => {
         }
         else{
         try {
-            const datas = await C_Division.find({sgpi: { $gt: req.body.parameter }  }).sort({sgpi:1}); // Fetch all documents from c_division    
+            const datas = await C_Division.find({sgpi: { $gt: req.body.parameter }  }).sort({sgpi:-1}); // Fetch all documents from c_division    
             if (datas.length === 0) {
                 console.log('No data found');
                 show = false

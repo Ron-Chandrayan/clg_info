@@ -131,28 +131,28 @@
         <tr>
           <th scope="row">Applied Physics Lab</th>
           <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.applied_physics_lab %></td>
-          <td><%= atten[0].attendance['AP/AC (Lectures)'].lectures%>/<%if(data[0].rollNo<=63){%>7<%}else if(data[0].rollNo>=63 && data[0].rollNo<=126 ){%>6<%}%></td>
+          <td><%= atten[0].attendance['AP/AC (Lectures)'].lectures%>/<%if(data[0].rollNo>=1 && data[0].rollNo<=21){%> 7 <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> 10 <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%> 6 <%}%></td>
           <td><%= atten[0].attendance['AP/AC (Lectures)'].percentage %>%</td>
           <td></td>
         </tr>
         <tr>
           <th scope="row">BEEE Lab</th>
           <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.beee_lab %></td>
-          <td><%= atten[0].attendance['BEE (Lectures)'].lectures%>/<%if(data[0].rollNo<=63){%>7<%}else if(data[0].rollNo>=63 && data[0].rollNo<=126 ){%>7<%}%></td>
+          <td><%= atten[0].attendance['BEE (Lectures)'].lectures%>/<%if(data[0].rollNo>=1 && data[0].rollNo<=21){%> 7 <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> 7 <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%> 8 <%}%></td>
           <td><%= atten[0].attendance['BEE (Lectures)'].percentage %> %</td>
           <td></td>
         </tr>
         <tr>
           <th scope="row">CP Lab</th>
           <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.cp_lab %></td>
-          <td><%= atten[0].attendance['CP (Lectures)'].lectures%>/<%if(data[0].rollNo<=63){%>6<%}else if(data[0].rollNo>=63 && data[0].rollNo<=126 ){%>8<%}%></td>
+          <td><%= atten[0].attendance['CP (Lectures)'].lectures%>/<%if(data[0].rollNo>=1 && data[0].rollNo<=21){%> 6 <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> 6 <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%> 8 <%}%></td>
           <td><%= atten[0].attendance['CP (Lectures)'].percentage %> %</td>
           <td></td>
         </tr>
         <tr>
           <th scope="row">AMRD Lab</th>
           <td colspan="4"><strong>Total marks: </strong><%= data[0].subjects.lab.amrd_lab %></td>
-          <td><%= atten[0].attendance['AMRD - Workshop'].lectures%>/<%if(data[0].rollNo<=63){%>9<%}else if(data[0].rollNo>=63 && data[0].rollNo<=126 ){%>8<%}%></td>
+          <td><%= atten[0].attendance['AMRD - Workshop'].lectures%>/<%if(data[0].rollNo>=1 && data[0].rollNo<=21){%> 8 <%} else if(data[0].rollNo>=22 && data[0].rollNo<=42){%> 8 <%}else if(data[0].rollNo>=43 && data[0].rollNo<=63){%> 7 <%}%></td>
           <td><%= atten[0].attendance['AMRD - Workshop'].percentage %> %</td>
           <td></td>
         </tr>
@@ -160,7 +160,7 @@
           <th scope="row">Workshop</th>
           <td colspan="2"><strong>Grade points:- </strong><%= data[0].additional_courses.workshop.grade_points %></td>
           <td colspan="2"><strong>Grade:- </strong><%= data[0].additional_courses.workshop.grade %></td>
-          <td><%= atten[0].attendance['Workshop'].lectures%>/<%if(data[0].rollNo<=63){%>6<%}else if(data[0].rollNo>=63 && data[0].rollNo<=126 ){%>8<%}%></td>
+          <td><%= atten[0].attendance['Workshop'].lectures%>/<%if(data[0].rollNo>=1 && data[0].rollNo<=16){%> 6 <%} else if(data[0].rollNo>=17 && data[0].rollNo<=63){%> 7 <%}%></td>
           <td><%= atten[0].attendance['Workshop'].percentage %> %</td>
           <td></td>
         </tr>
